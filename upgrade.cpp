@@ -113,7 +113,7 @@ void processIP(const std::string& rosVersion, const std::string& ip) {
     // Now, for each package, create the download URL and tell device to fetch it
     for (const auto& pkg : packageNames) {
         std::string fileName = pkg + "-" + rosVersion + "-" + architecture + ".npk";
-        std::string packageURL = "https://example.ee.lv/routeros/" + rosVersion + "/" + fileName;
+        std::string packageURL = "https://build-vault.mt.lv/routeros/" + rosVersion + "/" + fileName;
 
         // ssh fetch command to download the package file on the device itself
         std::string fetchCmd = "ssh -o StrictHostKeyChecking=no " + USER + "@" + ip +
