@@ -113,7 +113,7 @@ void processIP(const std::string& rosVersion, const std::string& ip) {
     // Now, for each package, create the download URL and tell device to fetch it
     for (const auto& pkg : packageNames) {
         std::string fileName = pkg + "-" + rosVersion + "-" + architecture + ".npk";
-        std::string packageURL = "https://hidden/routeros/" + rosVersion + "/" + fileName;
+        std::string packageURL = "https://example.ee.lv/routeros/" + rosVersion + "/" + fileName;
 
         // ssh fetch command to download the package file on the device itself
         std::string fetchCmd = "ssh -o StrictHostKeyChecking=no " + USER + "@" + ip +
@@ -131,8 +131,9 @@ void processIP(const std::string& rosVersion, const std::string& ip) {
     std::string actionCmd;
     if (DOWNGRADE) {
         // Downgrade requires us to answer 'y' to prompt; using ssh with pseudo-tty to send it
-        actionCmd = "ssh -tt -o StrictHostKeyChecking=no " + USER + "@" + ip +
-                     " \"/system package downgrade\" < <(echo y)";
+        actionCmd = "ssh -o StrictHostKeyChecking=no " + USER + "@" + ip +
+                " \"/system package downgrade\"";
+
         {
             std::lock_guard<std::mutex> lock(io_mutex);
             std::cout << "[*] Downgrading " << ip << "..." << std::endl;
