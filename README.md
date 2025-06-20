@@ -26,3 +26,8 @@ std::string packageURL = "https://example.eu/routeros/" + rosVersion + "/" + fil
 g++ upgrade.cpp -o upgrade
 ./upgrade <ros_version> <ip_prefix> <start_ip>-<end_ip> [--debug] [-d]
 ./upgrade 7.21_ab175 192.168.20 198-202
+
+
+# GUI version
+Created with Qt. 
+![alt text](image.png)
